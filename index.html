@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anahi GV Nails | Luxury Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+
+<header class="hero">
+    <nav>
+        <div class="logo">Anahi GV Nails</div>
+        <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#admin-section">Administración</a></li>
+        </ul>
+        <a class="btn" href="#agenda">Reservar</a>
+    </nav>
+
+    <div class="hero-content">
+        <h1>Luxury Nail Studio</h1>
+        <p>Diseños exclusivos • Agenda automática • Experiencia premium</p>
+        <a class="btn" href="#agenda">Agenda tu cita</a>
+    </div>
+</header>
+
+<section id="servicios" class="section">
+    <h2>Servicios</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Gelish</h3>
+            <p>1 hora</p>
+            <span>$350</span>
+        </div>
+        <div class="card">
+            <h3>Acrílico</h3>
+            <p>2.5 horas</p>
+            <span>$550</span>
+        </div>
+        <div class="card">
+            <h3>Diseño Especial</h3>
+            <p>3 horas</p>
+            <span>$650+</span>
+        </div>
+        <div class="card">
+            <h3>Pedicure</h3>
+            <p>1.5 horas</p>
+            <span>$450</span>
+        </div>
+    </div>
+</section>
+
+<section id="agenda" class="section dark">
+    <h2>Agenda Automática</h2>
+    <div class="booking-container">
+        <div class="booking-info">
+            <h3>Reserva tu cita</h3>
+            <p>Horario: Lunes a Sábado de 10 AM a 8 PM</p>
+            <ul>
+                <li>✔ Horarios inteligentes</li>
+                <li>✔ Evita empalmes guardando en tiempo real</li>
+                <li>✔ Confirmación automática</li>
+                <li>✔ Duración calculada</li>
+            </ul>
+        </div>
+
+        <form id="bookingForm" class="booking-form">
+            <input type="text" id="name" placeholder="Nombre completo" required>
+
+            <select id="service" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="Gelish" data-duration="60">Gelish - 1h</option>
+                <option value="Acrílico" data-duration="150">Acrílico - 2.5h</option>
+                <option value="Diseño Especial" data-duration="180">Diseño Especial - 3h</option>
+                <option value="Pedicure" data-duration="90">Pedicure - 1.5h</option>
+            </select>
+
+            <input type="date" id="date" required>
+
+            <select id="time" required>
+                <option value="">Selecciona horario</option>
+            </select>
+
+            <div class="duration-box">
+                Duración estimada: <span id="durationText">--</span>
+            </div>
+
+            <button type="submit" class="btn">Confirmar cita</button>
+        </form>
+    </div>
+    <div id="confirmation"></div>
+</section>
+
+<section id="galeria" class="section">
+    <h2>Galería</h2>
+    <div class="gallery">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1604654894610-df490651e56c?q=80&w=500&auto=format&fit=crop" alt="Nails 1"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1632345031435-8797b2d58045?q=80&w=500&auto=format&fit=crop" alt="Nails 2"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?q=80&w=500&auto=format&fit=crop" alt="Nails 3"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=500&auto=format&fit=crop" alt="Nails 4"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=500&auto=format&fit=crop" alt="Nails 5"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=500&auto=format&fit=crop" alt="Nails 6"></div>
+    </div>
+</section>
+
+<section class="section dark payments">
+    <h2>Pagos</h2>
+    <p>Aceptamos tarjeta, transferencia y anticipo digital.</p>
+    <div class="payment-grid">
+        <div class="pay-box">Visa</div>
+        <div class="pay-box">Mastercard</div>
+        <div class="pay-box">Mercado Pago</div>
+        <div class="pay-box">PayPal</div>
+    </div>
+</section>
+
+<section id="admin-section" class="section dark">
+    <h2>Panel de Control</h2>
+    <div id="admin-auth" class="admin-auth-box">
+        <h3>Acceso exclusivo para Administrador</h3>
+        <input type="password" id="adminPassword" placeholder="Introduce la contraseña" />
+        <button id="loginAdminBtn" class="btn">Ingresar al Panel</button>
+    </div>
+    
+    <div id="admin-panel" class="admin-panel-box" style="display: none;">
+        <div class="panel-header">
+            <h3>Citas Programadas (Firebase)</h3>
+            <button id="logoutAdminBtn" class="btn btn-secondary">Cerrar Sesión</button>
+        </div>
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Servicio</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentsTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<footer id="contacto">
+    <h3>Anahi GV Nails</h3>
+    <p>Tu estudio premium de uñas.</p>
+    <p>Horario: Lunes a Sábado • 10:00 AM — 8:00 PM</p>
+    <a class="whatsapp" href="https://wa.me/5211234567890" target="_blank">WhatsApp</a>
+</footer>
+
+</body>
+</html>
