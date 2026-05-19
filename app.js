@@ -1,4 +1,4 @@
-// CONFIGURACIÓN DE FIREBASE (Sustituye por tus claves reales de la consola de Firebase)
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBp5iHST3h1TKR-BTP08kHHwNmL7er1nW4",
   authDomain: "anahigvnails.firebaseapp.com",
