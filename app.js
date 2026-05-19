@@ -1,11 +1,11 @@
 // CONFIGURACIÓN DE FIREBASE (Sustituye por tus claves reales de la consola de Firebase)
 const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_AUTH_DOMAIN",
-    projectId: "TU_PROJECT_ID",
-    storageBucket: "TU_STORAGE_BUCKET",
-    messagingSenderId: "TU_MESSAGING_SENDER_ID",
-    appId: "TU_APP_ID"
+  apiKey: "AIzaSyBp5iHST3h1TKR-BTP08kHHwNmL7er1nW4",
+  authDomain: "anahigvnails.firebaseapp.com",
+  projectId: "anahigvnails",
+  storageBucket: "anahigvnails.firebasestorage.app",
+  messagingSenderId: "12968042532",
+  appId: "1:12968042532:web:f2a31cf3a23e69a757b8b1"
 };
 
 // Inicializar Firebase si las claves están configuradas
